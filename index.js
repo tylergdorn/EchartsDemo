@@ -50,6 +50,8 @@ $(document).ready(function(){
         dataMale.push(temp);
         dataFemale.push(temp2);
     }
+    console.log(dataMale);
+    // console.log(dataFemale);
     var chart = echarts.init(document.getElementById('main2'));
     let options = {
         title: {
@@ -100,7 +102,7 @@ function radarGraph(){
 
     option = {
         title: {
-            text: 'Male and Female Deaths from Cholera in naples, per 10000'
+            text: 'Deaths from Cholera in Naples'
         },
         tooltip: {},
         legend: {

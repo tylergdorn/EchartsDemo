@@ -67,14 +67,51 @@
         series: [
         {
             type: 'pie',
-                        data: dataFemale,
+                        data: [
+                        {
+                          "value": "2075391",
+                          "name": "0 to 9"
+                        },
+                        {
+                          "value": "1711664",
+                          "name": "10 to 19"
+                        },
+                        {
+                          "value": "1395091",
+                          "name": "20 to 29"
+                        },
+                        {
+                          "value": "1073914",
+                          "name": "30 to 39"
+                        },
+                        {
+                          "value": "810979",
+                          "name": "40 to 49"
+                        },
+                        {
+                          "value": "560534",
+                          "name": "50 to 59"
+                        },
+                        {
+                          "value": "351893",
+                          "name": "60 to 69"
+                        },
+                        {
+                          "value": "166194",
+                          "name": "70 to 79"
+                        },
+                        {
+                          "value": "40772",
+                          "name": "80+"
+                        }
+                      ],
                     },
                     
                 ]
                 
             }
             
-            chartfemale.setOption(options2);
+        chartfemale.setOption(options2);
         </code>
         <div id="main2" class="graph"></div>
         <code class="code">
@@ -101,7 +138,7 @@
         }
         
         chart.setOption(options);
-            </code>
+        </code>
     <div id="main4" class="graph"></div>
     <code class="code">
             let myChart = echarts.init(document.getElementById('main4'));
