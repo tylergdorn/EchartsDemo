@@ -1,24 +1,28 @@
 // based on prepared DOM, initialize echarts instance
 $(document).ready(function(){
-    var myChart = echarts.init(document.getElementById('main'));
-
+    
     // specify chart configuration item and data
-    var option = {
+    let randomData = [];
+    for(let i = 0; i < 5; i++){
+        randomData.push(Math.floor(Math.random() * 30));
+    }
+    let myChart = echarts.init(document.getElementById('main'));
+    let option = {
         title: {
-            text: 'ECharts entry example'
+            text: 'ECharts example'
         },
         tooltip: {},
         legend: {
-            data:['Sales']
+            data:['Example']
         },
         xAxis: {
-            data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+            data: ["something","hawaii","china","random","pants","data"]
         },
         yAxis: {},
         series: [{
-            name: 'Sales',
+            name: 'Example',
             type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
+            data: randomData
         }]
     };
     myChart.setOption(option);
@@ -57,6 +61,11 @@ $(document).ready(function(){
                 type: 'pie',
                 data: dataMale,
                 roseType: 'radius',
+                animationType: 'scale',
+                animationEasing: 'bounceOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
             },
             
         ]
@@ -74,6 +83,7 @@ $(document).ready(function(){
             {
                 type: 'pie',
                 data: dataFemale,
+                
             },
             
         ]
@@ -81,5 +91,59 @@ $(document).ready(function(){
     }
     
     chartfemale.setOption(options2);
+    radarGraph();
     // use configuration item and data specified to show chart
 });
+
+function radarGraph(){
+    let myChart = echarts.init(document.getElementById('main4'));
+
+    option = {
+        title: {
+            text: 'Male and Female Deaths from Cholera in naples, per 10000'
+        },
+        tooltip: {},
+        legend: {
+            data: ['Male Deaths per 10000', 'Female Deaths per 10000']
+        },
+        radar: {
+            // shape: 'circle',
+            name: {
+                textStyle: {
+                    color: '#fff',
+                    backgroundColor: '#999',
+                    borderRadius: 3,
+                    padding: [3, 5]
+               }
+            },
+            indicator: [
+               { name: 'age 0-1', max: 40},
+               { name: 'age 2-5', max: 40},
+               { name: 'age 6-10', max: 40},
+               { name: 'age 11-15', max: 40},
+               { name: 'age 16-20', max: 40},
+               { name: 'age 21-40', max: 40},
+               { name: 'age 41-60', max: 40},
+               { name: 'age 61-81', max: 30},
+               { name: 'age over 80', max: 40}
+            ]
+        },
+        series: [{
+            name: 'Male and Female Deaths from Cholera in naples, per 10000',
+            type: 'radar',
+            // areaStyle: {normal: {}},
+            data : [
+                {
+                    value : [8.2, 14.0, 12.1, 7.8, 7.2, 12.1, 13.7, 20.5, 39.6],
+                    name : 'Male Deaths per 10000'
+                },
+                 {
+                    value : [8.9, 14.7, 11.2, 7.1, 7.2, 11.8, 12.9, 20.5, 37.8],
+                    name : 'Female Deaths per 10000'
+                }
+            ]
+        }]
+    };
+    myChart.setOption(option);
+
+}
